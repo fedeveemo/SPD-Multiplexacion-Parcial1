@@ -1,0 +1,77 @@
+// C++ code
+//
+
+#define A 12
+#define B 13
+#define C 7
+#define D 8
+#define E 9
+#define F 11
+#define G 10
+#define SUMA 5
+#define RESTA 4
+#define RESET 3
+ 
+
+// Configuración de pines
+int contador = 0;
+void setup() {
+  // Configuramos los pines como salida
+  pinMode(A, OUTPUT);
+  pinMode(B, OUTPUT);
+  pinMode(C, OUTPUT);
+  pinMode(D, OUTPUT);
+  pinMode(E, OUTPUT);
+  pinMode(F, OUTPUT);
+  pinMode(G, OUTPUT);
+
+  // Configuramos los botones como entrada
+  pinMode(botonSuma, INPUT_PULLUP);
+  pinMode(botonResta, INPUT_PULLUP);
+  pinMode(botonReset, INPUT_PULLUP);
+}
+
+int segundosAntes = -1;
+
+void loop()
+{
+	if(!digitalRead(SUMA))
+    {
+      contador++;
+      if (contador < 0)
+    }
+  	if(!digitalRead(RESTA))
+    {
+      contador++;
+      if (contador < 0)
+    }
+  	if(!digitalRead(RESET))
+    {
+      contador++ ;
+      contador = 0;
+      printDigit (contador);
+    }
+}
+
+void MostrarNumero (int numero)
+{
+  digitalWrite(A, LOW);
+  digitalWrite(B, LOW);
+  digitalWrite(C, LOW);
+  digitalWrite(D, LOW);
+  digitalWrite(E, LOW);
+  digitalWrite(F, LOW);
+  digitalWrite(G, LOW);
+  switch (digit)
+  {
+    case 1:
+    {
+    digitalWrite(B, HIGH);
+    digitalWrite(C, HIGH);
+    }
+    case 2:
+    {
+    	
+    }
+  }
+}
