@@ -1,4 +1,5 @@
 # SPD-Multiplexacion-Parcial1-PT1
+![image](https://github.com/fedeveemo/SPD-Multiplexacion-Parcial1/assets/146194035/9fa1586c-2a9d-4c87-bf7a-4881e5f63425)
 # Integrantes
 - Lucas Matías Rodas Arce
 - Joaquin Caetano Miño
