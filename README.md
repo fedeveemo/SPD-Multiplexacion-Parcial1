@@ -43,3 +43,5 @@ El funcionamiento básico de una fotoresistencia es el siguiente:
 - Cuando hay mucha luz: En condiciones de luz intensa, la resistencia de la fotoresistencia disminuye, ofreciendo una baja resistencia al flujo de corriente eléctrica.
 
 El Arduino puede usar una fotoresistencia para detectar la intensidad de la luz ambiente. Esto es especialmente útil en proyectos donde se desea controlar cosas en función de la luz, como encender luces cuando se oscurece o medir la intensidad de la luz en un entorno específico.
+# Link del proyecto
+- https://www.tinkercad.com/things/lH9A3awUywY
