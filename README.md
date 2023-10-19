@@ -11,7 +11,7 @@
 # Función Principal
 ---
 # Link del proyecto 
--
+- https://www.tinkercad.com/things/5bUPYDLrb22
 # Proyecto: Switch Numeros Primos
 ![image](https://github.com/fedeveemo/SPD-Multiplexacion-Parcial1/assets/146194035/609e3c03-330b-4837-b6a6-20ec4e840139)
 )
@@ -20,4 +20,4 @@
 # Función Principal
 ---
 # Link del proyecto 
--
+- https://www.tinkercad.com/things/lGQaPrCB3t8
