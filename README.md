@@ -33,3 +33,13 @@ Motor de aficionado:
 Un "motor de aficionado" generalmente se refiere a un motor pequeño o servomotor utilizado en proyectos de electrónica doméstica o proyectos de hobby, a menudo junto con la plataforma Arduino. Estos motores tienen una amplia gama de aplicaciones y su uso depende del proyecto específico.
 
 En resumen, un motor de CC es un dispositivo versátil que convierte energía eléctrica en movimiento mecánico y se utiliza en una variedad de aplicaciones, mientras que los motores de hobby Arduino son motores pequeños que se usan comúnmente para controlar proyectos de electrónica y robótica. Estos cuentan con proyectos funcionales y de movimiento a través de Arduino.
+
+# Fotorresistencia (PARTE 3)
+![image](https://github.com/fedeveemo/SPD-Multiplexacion-Parcial1/assets/146194035/66d250e2-57af-4b3b-9500-5edcced72b43)
+Un elemento de fotoresistencia en Arduino es un componente que cambia su resistencia eléctrica en función de la cantidad de luz incidente que recibe. También se le conoce como LDR (Light-Dependent Resistor) o resistencia dependiente de la luz.
+El funcionamiento básico de una fotoresistencia es el siguiente:
+
+- Cuando hay poca luz: En condiciones de poca luz o en la oscuridad, la resistencia de la fotoresistencia es alta, lo que significa que ofrece una alta resistencia al flujo de corriente eléctrica.
+- Cuando hay mucha luz: En condiciones de luz intensa, la resistencia de la fotoresistencia disminuye, ofreciendo una baja resistencia al flujo de corriente eléctrica.
+
+El Arduino puede usar una fotoresistencia para detectar la intensidad de la luz ambiente. Esto es especialmente útil en proyectos donde se desea controlar cosas en función de la luz, como encender luces cuando se oscurece o medir la intensidad de la luz en un entorno específico.
