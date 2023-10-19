@@ -1,60 +1,77 @@
-// C++ code
-//
-
+// Definición de pines para segmentos y botones
 #define A 12
 #define B 13
-#define C 7
-#define D 8
-#define E 9
 #define F 11
 #define G 10
-#define SUMA 5
-#define RESTA 4
-#define RESET 3
- 
+#define E 9
+#define D 8
+#define C 7
+#define SUBE 4
+#define BAJA 3
+#define RESET 5
+#define UNIDAD A4
+#define DECENA A5
+#define APAGADOS 0
+#define TIMEDISPLAYON 10
+#define INTERRUPTOR 2
 
-// Configuración de pines
-int contador = 0;
+// Variables para el contador, botones y estado del interruptor
+int countDigit = 0;
+int sube = 1;
+int estadoSube = 1;
+int baja = 1;
+int estadoBaja = 1;
+int reset = 1;
+int estadoReset = 1;
+int interruptor = 0;
+bool primo = false;
+
 void setup() {
-  // Configuramos los pines como salida
-  pinMode(A, OUTPUT);
-  pinMode(B, OUTPUT);
+  // Configuración de pines de entrada/salida
+  pinMode(BAJA, INPUT_PULLUP);
+  pinMode(SUBE, INPUT_PULLUP);
+  pinMode(RESET, INPUT_PULLUP);
+  
   pinMode(C, OUTPUT);
   pinMode(D, OUTPUT);
   pinMode(E, OUTPUT);
-  pinMode(F, OUTPUT);
   pinMode(G, OUTPUT);
+  pinMode(F, OUTPUT);
+  pinMode(A, OUTPUT);
+  pinMode(B, OUTPUT);
+  
+  pinMode(UNIDAD, OUTPUT);
+  pinMode(DECENA, OUTPUT);
 
-  // Configuramos los botones como entrada
-  pinMode(botonSuma, INPUT_PULLUP);
-  pinMode(botonResta, INPUT_PULLUP);
-  pinMode(botonReset, INPUT_PULLUP);
+  // Inicializa el display mostrando el número 0
+  printDigit(0, primo);
 }
 
-int segundosAntes = -1;
-
-void loop()
-{
-	if(!digitalRead(SUMA))
-    {
-      contador++;
-      if (contador < 0)
-    }
-  	if(!digitalRead(RESTA))
-    {
-      contador++;
-      if (contador < 0)
-    }
-  	if(!digitalRead(RESET))
-    {
-      contador++ ;
-      contador = 0;
-      printDigit (contador);
-    }
+void loop() {
+  // Comprueba si se ha presionado algún botón (SUBE, BAJA o RESET)
+  int pressed = keypressed();
+  if (pressed == SUBE) {
+    // Incrementa el contador
+    countDigit++;
+    if (countDigit > 99)
+      countDigit = 0; // Vuelve a 0 cuando llega a 99
+  } else if (pressed == BAJA) {
+    // Decrementa el contador
+    countDigit--;
+    if (countDigit < 0)
+      countDigit = 99; // Vuelve a 99 cuando es menor que 0
+  } else if (pressed == RESET) {
+    // Reinicia el contador a 0
+    countDigit = 0;
+  }
+  
+  // Muestra el valor del contador en el display
+  printCount(countDigit);
 }
 
-void MostrarNumero (int numero)
-{
+void printDigit(int digit, bool primo) {
+  interruptor = digitalRead(INTERRUPTOR);
+  // Apaga todos los segmentos
   digitalWrite(A, LOW);
   digitalWrite(B, LOW);
   digitalWrite(C, LOW);
@@ -62,16 +79,308 @@ void MostrarNumero (int numero)
   digitalWrite(E, LOW);
   digitalWrite(F, LOW);
   digitalWrite(G, LOW);
-  switch (digit)
+  
+  // Configuración de segmentos para cada dígito
+  
+  switch (digit) 
+    
+    //Prende las luces segun el numero recibido desde
+    //la funcion printCount()
   {
+    case 0:
+    {
+      if(interruptor==0 && primo == true)
+      {
+        digitalWrite(A, HIGH);
+        digitalWrite(B, HIGH);
+        digitalWrite(F, HIGH);
+        digitalWrite(E, HIGH);
+        digitalWrite(D, HIGH);
+        digitalWrite(C, HIGH);
+        break;
+      }
+      else if(interruptor==1 && primo == true)
+      {
+      digitalWrite(A, HIGH);
+      digitalWrite(B, HIGH);
+      digitalWrite(F, HIGH);
+      digitalWrite(E, HIGH);
+      digitalWrite(D, HIGH);
+      digitalWrite(C, HIGH);
+      break;
+      }
+    }
     case 1:
     {
-    digitalWrite(B, HIGH);
-    digitalWrite(C, HIGH);
+      if(interruptor==0)
+      {
+        digitalWrite(B, HIGH);
+        digitalWrite(C, HIGH);
+        break;
+      }
+      else if(interruptor==1 && primo == true)
+      {
+      digitalWrite(B, HIGH);
+      digitalWrite(C, HIGH);
+      break;
+      }
     }
     case 2:
     {
-    	
+      if(interruptor==0)
+      {
+        digitalWrite(A, HIGH);
+        digitalWrite(B, HIGH);
+        digitalWrite(G, HIGH);
+        digitalWrite(E, HIGH);
+        digitalWrite(D, HIGH);
+        break;
+      }
+      else if(interruptor==1 && primo == true)
+      {
+      digitalWrite(A, HIGH);
+      digitalWrite(B, HIGH);
+      digitalWrite(G, HIGH);
+      digitalWrite(E, HIGH);
+      digitalWrite(D, HIGH);
+      break;
+      }
+    }
+    case 3:
+    {
+      if(interruptor==0)
+      {
+        digitalWrite(A, HIGH);
+        digitalWrite(B, HIGH);
+        digitalWrite(G, HIGH);
+        digitalWrite(D, HIGH);
+        digitalWrite(C, HIGH);
+        break;
+      }
+      else if(interruptor==1 && primo == true)
+      {
+      digitalWrite(A, HIGH);
+      digitalWrite(B, HIGH);
+      digitalWrite(G, HIGH);
+      digitalWrite(D, HIGH);
+      digitalWrite(C, HIGH);
+      break;
+      }
+    }
+    case 4:
+    {
+      if(interruptor==0)
+      {
+      digitalWrite(B, HIGH);
+      digitalWrite(F, HIGH);
+      digitalWrite(G, HIGH);
+      digitalWrite(C, HIGH);
+      break;
+      }
+      else if(interruptor==1 && primo == true)
+      {
+      digitalWrite(B, HIGH);
+      digitalWrite(F, HIGH);
+      digitalWrite(G, HIGH);
+      digitalWrite(C, HIGH);
+      break;
+      }
+    }
+    case 5:
+    {
+      if(interruptor==0)
+      {
+      digitalWrite(A, HIGH);
+      digitalWrite(F, HIGH);
+      digitalWrite(G, HIGH);
+      digitalWrite(D, HIGH);
+      digitalWrite(C, HIGH);
+      break;
+      }
+      else if(interruptor==1 && primo == true)
+      {
+      digitalWrite(A, HIGH);
+      digitalWrite(F, HIGH);
+      digitalWrite(G, HIGH);
+      digitalWrite(D, HIGH);
+      digitalWrite(C, HIGH);
+      break;
+      }
+    }
+    case 6:
+    {
+      if(interruptor==0)
+      {
+      digitalWrite(A, HIGH);
+      digitalWrite(F, HIGH);
+      digitalWrite(G, HIGH);
+      digitalWrite(E, HIGH);
+      digitalWrite(D, HIGH);
+      digitalWrite(C, HIGH);
+      break;
+      }
+      else if(interruptor==1 && primo == true)
+      {
+      digitalWrite(A, HIGH);
+      digitalWrite(F, HIGH);
+      digitalWrite(G, HIGH);
+      digitalWrite(E, HIGH);
+      digitalWrite(D, HIGH);
+      digitalWrite(C, HIGH);
+      break;
+      }
+    }
+    case 7:
+    {
+      if(interruptor==0)
+      {
+      digitalWrite(A, HIGH);
+      digitalWrite(B, HIGH);
+      digitalWrite(C, HIGH);
+      break;
+      }
+      else if(interruptor==1 && primo == true)
+      {
+      digitalWrite(A, HIGH);
+      digitalWrite(B, HIGH);
+      digitalWrite(C, HIGH);
+      break;
+      }
+    }
+    case 8:
+    {
+      if(interruptor==0)
+      {
+      digitalWrite(A, HIGH);
+      digitalWrite(B, HIGH);
+      digitalWrite(F, HIGH);
+      digitalWrite(G, HIGH);
+      digitalWrite(E, HIGH);
+      digitalWrite(D, HIGH);
+      digitalWrite(C, HIGH);
+      break;
+      }
+      else if(interruptor==1 && primo == true)
+      {
+      digitalWrite(A, HIGH);
+      digitalWrite(B, HIGH);
+      digitalWrite(F, HIGH);
+      digitalWrite(G, HIGH);
+      digitalWrite(E, HIGH);
+      digitalWrite(D, HIGH);
+      digitalWrite(C, HIGH);
+      break;
+      }
+    }
+    case 9:
+    {
+      if(interruptor==0)
+      {
+      digitalWrite(A, HIGH);
+      digitalWrite(B, HIGH);
+      digitalWrite(F, HIGH);
+      digitalWrite(G, HIGH);
+      digitalWrite(D, HIGH);
+      digitalWrite(C, HIGH);
+      break;
+      }
+      else if(interruptor==1 && primo == true)
+      {
+      digitalWrite(A, HIGH);
+      digitalWrite(B, HIGH);
+      digitalWrite(F, HIGH);
+      digitalWrite(G, HIGH);
+      digitalWrite(D, HIGH);
+      digitalWrite(C, HIGH);
+      break;
+      }
     }
   }
 }
+
+void prendeDigito(int digito)
+{
+  if(digito==DECENA)
+  {
+    digitalWrite(UNIDAD, LOW);
+    digitalWrite(DECENA, HIGH);
+    delay(TIMEDISPLAYON);
+  }
+  else if(digito==UNIDAD)
+  {
+    digitalWrite(UNIDAD, HIGH);
+    digitalWrite(DECENA, LOW);
+    delay(TIMEDISPLAYON);
+  }
+  else
+  {
+    digitalWrite(UNIDAD, HIGH);
+    digitalWrite(DECENA, HIGH);
+  }
+}
+
+void printCount(int count) {
+  primo = esPrimo(count);
+  prendeDigito(APAGADOS);
+  // Muestra la decena
+  printDigit(count / 10, primo);
+  prendeDigito(UNIDAD);
+  prendeDigito(APAGADOS);
+  // Muestra la unidad
+  printDigit(count - 10 * ((int)count / 10), primo);
+  prendeDigito(DECENA);
+}
+
+int keypressed(void) {
+  // Lee el estado de los botones SUBE, BAJA y RESET
+  sube = digitalRead(SUBE);
+  baja = digitalRead(BAJA);
+  reset = digitalRead(RESET);
+  
+  // Actualiza el estado de los botones
+  if (sube)
+    estadoSube = 1;
+  if (baja)
+    estadoBaja = 1;
+  if (reset)
+    estadoReset = 1;
+  
+  // Comprueba si se ha presionado algún botón y retorna su valor
+  if (sube == 0 && sube != estadoSube) {
+    estadoSube = sube;
+    return SUBE;
+  }
+  if (baja == 0 && baja != estadoBaja) {
+    estadoBaja = baja;
+    return BAJA;
+  }
+  if (reset == 0 && reset != estadoReset) {
+    estadoReset = reset;
+    return RESET;
+  }
+  return 0; // No se presionó ningún botón
+} 
+
+bool esPrimo(int digit) {
+  int i = 2;
+  // Inicializa i en 2, el número más bajo para verificar si digit es primo.
+
+  if (digit == 1 || digit == 0) {
+    // Si digit es igual a 0 o 1, no es un número primo.
+    primo = false;
+  } else {
+    // En otros casos, asumimos que digit es primo y verificamos.
+    primo = true;
+    for (i; i < digit; i++) {
+      // Comienza un bucle para verificar divisibilidad por todos los números desde 2 hasta digit - 1.
+      if (digit % i == 0) {
+        // Si digit es divisible por i, entonces no es primo.
+        primo = false;
+      }
+    }
+  }
+  delay(TIMEDISPLAYON);
+  // Agrega un pequeño retraso para que se pueda visualizar el resultado en el display.
+  return primo;
+}
+
