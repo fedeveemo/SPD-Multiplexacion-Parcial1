@@ -18,7 +18,7 @@
 ![image](https://github.com/fedeveemo/SPD-Multiplexacion-Parcial1/blob/main/Imagenes/Numeros%20Primos.png?raw=true).
 
 # Función Principal
-- La funcion sobre esta parte del trabajo es un contador con 2 display como el primer arduino, pero con la diferencia de que tiene un switch agregado, que hace que se intercale la forma de mostrar los numeros. Se mostraran los numeros como en el primer trabajo, pero tambien tendra la opcion de solo mostrar en el display los numeros primos.
+- La funcion sobre esta parte del trabajo es un contador con 2 display como el primer arduino, pero con la diferencia de que tiene un switch agregado, que hace que se intercale la forma de mostrar los numeros. Se mostraran los numeros como en el primer trabajo, pero tambien tendra la opcion de solo mostrar en el display los numeros primos. Y tiene agregado un medidor de temperatura.
 
 # Link del proyecto 
 - https://www.tinkercad.com/things/lGQaPrCB3t8
