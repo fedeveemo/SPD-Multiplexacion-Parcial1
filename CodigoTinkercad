@@ -69,9 +69,9 @@ void loop() {
   printCount(countDigit);
 }
 
-void printDigit(int digit, bool primo) {
+void printDigit(int digit, bool primo)
+{
   interruptor = digitalRead(INTERRUPTOR);
-  // Apaga todos los segmentos
   digitalWrite(A, LOW);
   digitalWrite(B, LOW);
   digitalWrite(C, LOW);
@@ -79,17 +79,13 @@ void printDigit(int digit, bool primo) {
   digitalWrite(E, LOW);
   digitalWrite(F, LOW);
   digitalWrite(G, LOW);
-  
-  // Configuración de segmentos para cada dígito
-  
-  switch (digit) 
-    
+  switch(digit)
     //Prende las luces segun el numero recibido desde
     //la funcion printCount()
   {
     case 0:
     {
-      if(interruptor==0 && primo == true)
+      if(interruptor==0)
       {
         digitalWrite(A, HIGH);
         digitalWrite(B, HIGH);
@@ -319,15 +315,15 @@ void prendeDigito(int digito)
   }
 }
 
-void printCount(int count) {
+void printCount(int count)
+  //recibe como valor el contador (countDigit)
+{
   primo = esPrimo(count);
   prendeDigito(APAGADOS);
-  // Muestra la decena
-  printDigit(count / 10, primo);
+  printDigit(count/10, primo); //calcula la decena
   prendeDigito(UNIDAD);
   prendeDigito(APAGADOS);
-  // Muestra la unidad
-  printDigit(count - 10 * ((int)count / 10), primo);
+  printDigit(count - 10*((int)count/10),primo);//calcula la unidad
   prendeDigito(DECENA);
 }
 
